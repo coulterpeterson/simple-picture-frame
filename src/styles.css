@@ -1,0 +1,9 @@
+body {
+  margin: 0px;
+  background: #000;
+  overflow: hidden; /* Hide scrollbars */
+}
+img {
+  width: 100vw;
+  height: auto;
+}

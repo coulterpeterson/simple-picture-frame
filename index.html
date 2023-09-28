@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Picture Frame</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+  />
+
+  <style>
+    body {
+      margin: 0px;
+      background: #000;
+      overflow: hidden; /* Hide scrollbars */
+    }
+    img {
+      width: 100vw;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slider main container -->
+  <div class="swiper">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides will be populated here -->
+    </div>
+  </div>
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script>
+    var slideshowDelayInMinutes = 15; // * Change this one as you like *
+    var slideshowDelayInMilliseconds = slideshowDelayInMinutes * 60000;
+
+    // Load in images
+    var folder = "images/";
+
+    $.ajax({
+        url : folder,
+        success: function (data) {
+            $(data).find("a").attr("href", function (i, val) {
+                if( val.match(/\.(jpe?g|png|gif)$/) ) { 
+                    console.log(folder + val);
+                    $(".swiper-wrapper").append( "<div class='swiper-slide'><img src='"+ folder + val +"'></div>" );
+                  } 
+            });
+
+            // Initialize Swiper
+            const swiper = new Swiper('.swiper', {
+              // Optional parameters
+              loop: true,
+              autoplay: {
+                delay: slideshowDelayInMilliseconds,
+              },
+            });
+        }
+    });
+   
+  </script>
+</body>
+</html>

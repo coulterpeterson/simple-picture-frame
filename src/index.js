@@ -37,6 +37,7 @@ function initSwiper() {
     loop: true,
     autoplay: {
       delay: slideshowDelayInMilliseconds,
+      disableOnInteraction: false,
     },
     init: false,
   });
